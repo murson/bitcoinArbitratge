@@ -46,7 +46,7 @@ def getCoinbaseData():#clunky but it works
 
     
 def convertLuno():
-    #1. Calculate Luno prices in USD
+    #Calculates Luno prices in USD
     global lunoBidUSD
     global lunoAskUSD
 
@@ -54,21 +54,19 @@ def convertLuno():
     lunoAskUSD = round(lunoAskPrice/zarusd,2)
 
 def calcArb():
-
+    #Calculates whether or not there is an arbitrage opportunity based on the BTC prices and exchange rates.
     global lunoFees
     global coinbaseFees
-    
-    #1. Determine whether or not there is an arbitrage opportunity
-    
+        
     if lunoAskUSD < lunoBidUSD:
-        print("Luno she is broken")
+        print("Buy and sell on Luno (this totally shouldn't happen like ever.")
 
     if coinbaseAskPrice < coinbaseBidPrice:
-        print("Coinbase she is broken")
+        print("Buy and sell on Coinbase (this totally shouldn't happen like ever.")
 
     if coinbaseAskPrice < lunoBidUSD:
         print("Buy from Coinbase, sell on Luno")
-        dallazBuy = float(raw_input("\nHow muts dalla$$$ u 1 2 sp3nd? "))
+        dallazBuy = float(raw_input("\nHow much in USD do you want to spend? "))
         
         BTCpurch = dallazBuy/coinbaseAskPrice
         BTCproceeds = BTCpurch*lunoBidUSD/coinbaseAskPrice
